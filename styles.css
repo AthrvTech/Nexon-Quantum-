@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #003B46;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+.hero-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(-45deg, #003B46, #66A5AD, #07575B, #66A5AD);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  text-align: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-logo {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+}
+
+.hero-tagline {
+  font-size: 1.8rem;
+  font-weight: 500;
+  height: 35px; /* for stable height during typewriter effect */
+  margin-bottom: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #C4DFE6;
+  animation: blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  50% { border-color: transparent; }
+}
+
+.cta-button {
+  background-color: #07575B;
+  border: none;
+  padding: 18px 45px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #C4DFE6;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #66A5AD88;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.4s ease;
+  animation: pulseGlow 2.5s infinite;
+}
+
+.cta-button:hover {
+  background-color: #C4DFE6;
+  color: #07575B;
+  box-shadow: 0 0 30px #C4DFE6;
+  transform: scale(1.07);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px #66A5AD88; }
+  50% { box-shadow: 0 0 30px #C4DFE6; }
+}
+
+footer {
+  padding: 15px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: white;
+  text-align: center;
+  background: #003B46;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .hero-logo {
+    font-size: 2.4rem;
+    letter-spacing: 5px;
+  }
+  .hero-tagline {
+    font-size: 1.4rem;
+  }
+  .cta-button {
+    padding: 14px 35px;
+    font-size: 1rem;
+  }
+}
