@@ -2,23 +2,124 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nexon Quantum</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexon Quantum 🔹</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-  <header class="hero-section">
-    <canvas id="particles"></canvas>
-    <div class="hero-content">
-      <h1 class="hero-logo">NEXON QUANTUM</h1>
-      <p class="hero-tagline"><span id="typewriter"></span> ⚛️</p>
-      <button class="cta-button" id="cta-btn">Let's Build Together 🚀</button>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>NQ 🔹</h2>
+      <span class="close-btn" onclick="toggleSidebar()">×</span>
     </div>
+    <nav>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#brochure">Brochure</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <h1 class="brand">Nexon Quantum</h1>
   </header>
 
-  <footer>© 2025 Nexon Quantum | Made with 💙 in India</footer>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Empowering Innovation for the Quantum Age ⚛️</h2>
+      <p>We build futuristic solutions with cutting-edge technology.</p>
+      <button>Let's Build Together</button>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Nexon Quantum is a futuristic tech agency aiming to lead the world into the Quantum Age.</p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="card">🌐 Web Development</div>
+      <div class="card">💻 Software Solutions</div>
+      <div class="card">🤖 AI & ML Prototypes</div>
+      <div class="card">🎨 UI/UX & Branding</div>
+      <div class="card">🛡 Cybersecurity</div>
+      <div class="card">🌀 Animation & Design</div>
+    </div>
+  </section>
+
+  <!-- Brochure -->
+  <section id="brochure">
+    <h2>Interactive Brochure</h2>
+    <button>Open Brochure</button>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients">
+    <h2>Our Clients</h2>
+    <div class="stats">
+      <div><span>50+</span> Clients</div>
+      <div><span>10</span> Countries</div>
+      <div><span>100%</span> Satisfaction</div>
+    </div>
+  </section>
+
+  <!-- Press -->
+  <section id="press">
+    <h2>Press Appearance</h2>
+    <p>Featured in top magazines and online tech platforms.</p>
+  </section>
+
+  <!-- Feedback -->
+  <section id="feedback">
+    <h2>Client Feedback</h2>
+    <div class="feedback-cards">
+      <div class="feedback-card">
+        <p>“Outstanding team with futuristic vision.”</p>
+        <h4>— Aarya Singh</h4>
+      </div>
+      <div class="feedback-card">
+        <p>“Helped us build a strong online identity!”</p>
+        <h4>— Dev Mehta</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-grid">
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div class="contact-info">
+        <p>📞 +91 9369553542</p>
+        <p>📩 nexonquantum@gmail.com</p>
+        <p>📷 Instagram: @nexonquantum</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with 💙 in India by Nexon Quantum</p>
+    <p>&copy; 2025 Nexon Quantum. All rights reserved.</p>
+  </footer>
+
 </body>
-</html>
+    </html>
+        
