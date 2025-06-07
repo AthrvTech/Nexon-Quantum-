@@ -4,89 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nexon Quantum</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #003B46, #66A5AD);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    header {
-      margin-bottom: 40px;
-    }
-
-    .logo {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-    }
-
-    .tagline {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      font-weight: 500;
-    }
-
-    .cta-button {
-      background-color: #07575B;
-      border: none;
-      padding: 15px 35px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #C4DFE6;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background-color: #C4DFE6;
-      color: #07575B;
-      transform: scale(1.05);
-    }
-
-    footer {
-      margin-top: auto;
-      padding: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    @media (max-width: 480px) {
-      .logo {
-        font-size: 2rem;
-      }
-      .tagline {
-        font-size: 1rem;
-      }
-      .cta-button {
-        padding: 12px 28px;
-        font-size: 1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <header>
-    <div class="logo">NEXON QUANTUM</div>
-    <div class="tagline">Empowering Innovation for the Quantum Age ⚛️</div>
-    <button class="cta-button" onclick="alert('Let\'s Build Together! 🚀')">Let's Build Together 🚀</button>
+  <header class="hero-section">
+    <canvas id="particles"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-logo">NEXON QUANTUM</h1>
+      <p class="hero-tagline"><span id="typewriter"></span> ⚛️</p>
+      <button class="cta-button" id="cta-btn">Let's Build Together 🚀</button>
+    </div>
   </header>
 
   <footer>© 2025 Nexon Quantum | Made with 💙 in India</footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
