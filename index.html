@@ -7,150 +7,163 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
+    body {
       font-family: 'Inter', sans-serif;
       background-color: #D7CEC7;
-      color: #fff;
+      color: #333;
+      line-height: 1.6;
     }
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #76323F;
+      padding: 15px 25px;
     }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 100px 20px;
-    }
-
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
+      font-size: 1.6rem;
       color: #fff;
-      margin-bottom: 20px;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
     }
 
-    h1 {
+    /* Hero */
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background-color: #F3F1EF;
+      border-bottom: 1px solid #C4BCB6;
+    }
+    header h1 {
       font-size: 3rem;
-      color: #fff;
+      color: #76323F;
       font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
     }
-
-    p {
+    header p {
       font-size: 1.2rem;
-      color: #eee;
-      margin-bottom: 40px;
+      color: #555;
+      font-style: italic;
     }
 
+    /* Sections */
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      color: #76323F;
+      margin-bottom: 10px;
+    }
+    section p {
+      color: #444;
+    }
+
+    /* Subscribe */
     .subscribe input[type="email"] {
       padding: 12px;
-      border: none;
+      width: 70%;
+      border: 1px solid #ccc;
       border-radius: 6px;
-      width: 280px;
-      max-width: 80%;
+      margin-top: 10px;
     }
-
     .subscribe button {
       padding: 12px 20px;
       background-color: #76323F;
       color: #fff;
       border: none;
       border-radius: 6px;
-      margin-left: 10px;
-      font-weight: bold;
       cursor: pointer;
+      margin-left: 10px;
+      font-weight: 600;
     }
 
+    /* Footer */
     footer {
-      position: fixed;
-      bottom: 10px;
-      left: 0;
-      right: 0;
+      background-color: #F3F1EF;
+      padding: 30px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #ccc;
-      z-index: 1;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #C4BCB6;
     }
 
-    @media (max-width: 500px) {
-      h1 { font-size: 2rem; }
-      .logo { font-size: 2rem; }
-      .subscribe button, .subscribe input {
+    @media (max-width: 600px) {
+      .subscribe input {
         width: 100%;
-        margin: 10px 0;
+        margin-bottom: 10px;
+      }
+      .subscribe button {
+        width: 100%;
+        margin-left: 0;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-end;
       }
     }
   </style>
 </head>
 <body>
 
-<canvas id="bg"></canvas>
+  <nav>
+    <div class="logo">UnmaskFiles</div>
+    <div class="nav-links">
+      <a href="#">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Disclaimer</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
 
-<div class="content">
-  <div class="logo">UnmaskFiles</div>
-  <h1>Coming Soon</h1>
-  <p>Truth is being prepared behind the curtain...</p>
+  <header>
+    <h1>Coming Soon</h1>
+    <p>Truth is loading... Stay tuned.</p>
+  </header>
 
-  <div class="subscribe">
-    <input type="email" placeholder="Enter your email..." />
-    <button onclick="alert('Thanks for subscribing!')">Notify Me</button>
-  </div>
-</div>
+  <section>
+    <h2>About Us</h2>
+    <p><strong>UnmaskFiles</strong> is a platform built to expose political scams, corruption, human rights violations, propaganda, and hidden truths. We believe in truth, justice, and transparency.</p>
+  </section>
 
-<footer>
-  &copy; 2025 UnmaskFiles. Truth Has No Owner.
-</footer>
+  <section>
+    <h2>Our Vision</h2>
+    <p>We envision a world where whistleblowers are safe, and the truth is never buried. Our goal is to create a secure space for anonymous reports and investigative content — supported by TRIDENT and the spirit of justice.</p>
+  </section>
 
-<script>
-  const canvas = document.getElementById("bg");
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  <section class="subscribe">
+    <h2>Get Notified</h2>
+    <p>Subscribe to receive updates when we launch.</p>
+    <form onsubmit="alert('Thank you for subscribing!'); return false;">
+      <input type="email" placeholder="Enter your email..." required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
 
-  const particlesArray = [];
-  const colors = ["#76323F", "#C09F80", "#fff", "#D7CEC7"];
+  <section>
+    <h2>Contact Us</h2>
+    <p>Email: support@unmaskfiles.org<br />
+    Instagram: @unmaskfiles<br />
+    Telegram: t.me/unmaskfiles</p>
+  </section>
 
-  for (let i = 0; i < 100; i++) {
-    particlesArray.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 3 + 1,
-      speedX: Math.random() * 1 - 0.5,
-      speedY: Math.random() * 1 - 0.5,
-      color: colors[Math.floor(Math.random() * colors.length)]
-    });
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particlesArray.forEach(p => {
-      p.x += p.speedX;
-      p.y += p.speedY;
-
-      if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(animateParticles);
-  }
-
-  animateParticles();
-
-  window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-</script>
+  <footer>
+    &copy; 2025 UnmaskFiles. Truth Has No Owner. | Built with ❤️ for justice.
+  </footer>
 
 </body>
 </html>
