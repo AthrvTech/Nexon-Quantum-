@@ -1,47 +1,222 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nexon Quantum - Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnmaskFiles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #EFECE9;
+      color: #333;
+    }
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background-color: #F3F1EF;
+      border-bottom: 1px solid #C4BCB6;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
+      color: #76323F;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo::before {
+      content: '\1F441';
+      font-size: 1.5rem;
+    }
+    .menu-toggle {
+      font-size: 2rem;
+      color: #76323F;
+      cursor: pointer;
+      display: none;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #565656;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a:hover {
+      color: #76323F;
+    }
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      color: #76323F;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: #565656;
+      font-style: italic;
+    }
+    .buttons {
+      margin-top: 40px;
+    }
+    .buttons a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #76323F;
+      padding: 14px 30px;
+      margin: 0 12px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .buttons a:hover {
+      background-color: #C09F80;
+      color: #111;
+    }
+    .section {
+      padding: 80px 20px;
+      background-color: #EFECE9;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #DDD;
+      border-radius: 12px;
+      padding: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      color: #76323F;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+      padding: 30px;
+      border-top: 1px solid #C4BCB6;
+      background-color: #F3F1EF;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        background: #EFECE9;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: none;
+      }
+      .nav-links.active { display: flex; }
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <div class="logo">UnmaskFiles</div>
+    <div class="menu-toggle" onclick="toggleMenu(this)">&#9776;</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">Submit</a></li>
+      <li><a href="#">Rights</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 
-<header>
-  <div class="container header-container">
-    <div class="logo">NQ</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-      </ul>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
+  <header>
+    <h1>One File Can Start a Revolution.</h1>
+    <p>Exposing hidden truths. No faces. Just files.</p>
+    <div class="buttons">
+      <a href="#">Explore Leaks</a>
+      <a href="#">Submit Tip</a>
     </div>
-  </div>
-</header>
+  </header>
 
-<section class="hero-section">
-  <div class="container hero-content">
-    <h1>Innovative Digital Solutions for Your Future</h1>
-    <p>We build websites, apps, AI, machine learning, and games — tailored for your success.</p>
-    <a href="services.html" class="btn-primary">Explore Services</a>
-  </div>
-  <div class="hero-animation">
-    <!-- Simple CSS animated wave -->
-    <div class="wave"></div>
-  </div>
-</section>
+  <section class="section">
+    <div class="card">
+      <h3>📂 Verified Leaks</h3>
+      <p>All documents are double-verified for authenticity.</p>
+    </div>
+    <div class="card">
+      <h3>🔐 Secure Submission</h3>
+      <p>Send files anonymously using encrypted methods.</p>
+    </div>
+    <div class="card">
+      <h3>🧠 Deep Investigations</h3>
+      <p>Each tip is thoroughly investigated and tracked.</p>
+    </div>
+    <div class="card">
+      <h3>🛡️ Whistleblower Safety</h3>
+      <p>Your identity is always protected by our tech.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Evidence-based Reports</h3>
+      <p>Truth backed by proof, not opinions.</p>
+    </div>
+    <div class="card">
+      <h3>🛰️ Real-Time Exposure</h3>
+      <p>Quick publishing of leaks with zero censorship.</p>
+    </div>
+    <div class="card">
+      <h3>📢 Awareness Campaigns</h3>
+      <p>Training and educating India on justice and truth.</p>
+    </div>
+  </section>
 
-<footer>
-  <div class="container footer-container">
-    <p>© 2025 Nexon Quantum. All rights reserved.</p>
-  </div>
-</footer>
+  <footer>
+    &copy; 2025 UnmaskFiles. Truth has no owner.
+  </footer>
 
-<script src="script.js"></script>
+  <script>
+    function toggleMenu(icon) {
+      icon.classList.toggle('open');
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('active');
+      icon.innerHTML = icon.classList.contains('open') ? '&times;' : '&#9776;';
+    }
+  </script>
 </body>
 </html>
