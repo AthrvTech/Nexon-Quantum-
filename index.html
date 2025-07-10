@@ -3,226 +3,154 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UnmaskFiles</title>
+  <title>UnmaskFiles - Coming Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: #D7CEC7;
-      color: #333;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-    }
-    nav {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 30px;
-      background-color: #F3F1EF;
-      border-bottom: 1px solid #C4BCB6;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .logo {
-      font-size: 1.8rem;
-      font-family: 'Playfair Display', serif;
-      color: #76323F;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .logo::before {
-      content: '\1F441';
-      font-size: 1.5rem;
-    }
-    .menu-toggle {
-      font-size: 2rem;
-      color: #76323F;
-      cursor: pointer;
-      display: none;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-    .nav-links li a {
-      text-decoration: none;
-      color: #565656;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    .nav-links li a:hover {
-      color: #76323F;
-    }
-    header {
-      text-align: center;
-      padding: 100px 20px 60px;
-      animation: fadeInDown 1s ease-in-out;
-    }
-    header h1 {
-      font-size: 3.5rem;
-      color: #76323F;
-      font-family: 'Playfair Display', serif;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.3rem;
-      color: #565656;
-      font-style: italic;
-      animation: fadeIn 2s ease-in-out;
-    }
-    .buttons {
-      margin-top: 40px;
-      animation: fadeInUp 1.5s ease-in-out;
-    }
-    .buttons a {
-      text-decoration: none;
+      background-color: #D7CEC7;
       color: #fff;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #eee;
+      margin-bottom: 40px;
+    }
+
+    .subscribe input[type="email"] {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      width: 280px;
+      max-width: 80%;
+    }
+
+    .subscribe button {
+      padding: 12px 20px;
       background-color: #76323F;
-      padding: 14px 30px;
-      margin: 0 12px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      margin-left: 10px;
+      font-weight: bold;
+      cursor: pointer;
     }
-    .buttons a:hover {
-      background-color: #C09F80;
-      color: #111;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      margin: 100px 0 20px;
-      color: #76323F;
-      font-family: 'Playfair Display', serif;
-    }
-    section.grid-section {
-      padding: 80px 20px;
-      background-color: #EFECE9;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #DDD;
-      border-radius: 12px;
-      padding: 30px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    .card h3 {
-      font-size: 1.5rem;
-      color: #76323F;
-      margin-bottom: 10px;
-      font-family: 'Playfair Display', serif;
-    }
-    .card p {
-      font-size: 1rem;
-      color: #555;
-    }
+
     footer {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      right: 0;
       text-align: center;
-      font-size: 0.95rem;
-      color: #555;
-      margin-top: 100px;
-      padding: 30px;
-      border-top: 1px solid #C4BCB6;
-      background-color: #F3F1EF;
+      font-size: 0.85rem;
+      color: #ccc;
+      z-index: 1;
     }
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 30px;
-        background: #EFECE9;
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        display: none;
-      }
-      .nav-links.active {
-        display: flex;
+
+    @media (max-width: 500px) {
+      h1 { font-size: 2rem; }
+      .logo { font-size: 2rem; }
+      .subscribe button, .subscribe input {
+        width: 100%;
+        margin: 10px 0;
       }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="logo">UnmaskFiles</div>
-    <div class="menu-toggle" onclick="toggleMenu(this)">&#9776;</div>
-    <ul class="nav-links">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="cases.html">Cases</a></li>
-      <li><a href="submitleak.html">Submit Leak</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="law&right.httml">Law & Rights</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
 
-  <header>
-    <h1>One File Can Start a Revolution.</h1>
-    <p>Exposing hidden truths. No faces. Just files.</p>
-    <div class="buttons">
-      <a href="#">Explore Files</a>
-      <a href="#">Submit Tip</a>
-    </div>
-  </header>
+<canvas id="bg"></canvas>
 
-  <h2 class="section-title">What We Do</h2>
-  <section class="grid-section">
-    <div class="card"><h3>📂 Verified Leaks</h3><p>All documents are double-verified for authenticity.</p></div>
-    <div class="card"><h3>🔐 Secure Submission</h3><p>Send files anonymously using encrypted methods.</p></div>
-    <div class="card"><h3>🧠 Deep Investigations</h3><p>Each tip is thoroughly investigated and tracked.</p></div>
-    <div class="card"><h3>🛡️ Whistleblower Safety</h3><p>Your identity is always protected by our tech.</p></div>
-    <div class="card"><h3>📊 Evidence-based Reports</h3><p>Truth backed by proof, not opinions.</p></div>
-    <div class="card"><h3>🚀 Real-Time Exposure</h3><p>Quick publishing of leaks with zero censorship.</p></div>
-    <div class="card"><h3>📢 Awareness Campaigns</h3><p>Training and educating India on justice and truth.</p></div>
-  </section>
+<div class="content">
+  <div class="logo">UnmaskFiles</div>
+  <h1>Coming Soon</h1>
+  <p>Truth is being prepared behind the curtain...</p>
 
-  <h2 class="section-title">More From Us</h2>
-  <section class="grid-section">
-    <div class="card"><h3>📚 Constitution & Laws</h3><p>Learn your fundamental rights and legal powers.</p></div>
-    <div class="card"><h3>⚖️ Legal Support</h3><p>We support legal rights to expose corruption in India.</p></div>
-    <div class="card"><h3>🗂️ Expose Categories</h3><p>Corruption, fraud, terrorism, cybercrime, abuse & more.</p></div>
-    <div class="card"><h3>🧾 Submit a Leak</h3><p>Use our secure form to report issues anonymously.</p></div>
-    <div class="card"><h3>📬 Contact Us</h3><p>Email: globalxpose@gmail.com — We reply within 24h.</p></div>
-    <div class="card"><h3>📈 Impact Dashboard</h3><p>Live updates on cases, leaks, and outcomes.</p></div>
-    <div class="card"><h3>👤 About Us</h3><p>Why we exist and who stands behind UnmaskFiles.</p></div>
-  </section>
+  <div class="subscribe">
+    <input type="email" placeholder="Enter your email..." />
+    <button onclick="alert('Thanks for subscribing!')">Notify Me</button>
+  </div>
+</div>
 
-  <footer>
-    &copy; 2025 UnmaskFiles. Truth has no owner. All data is securely transmitted.
-  </footer>
+<footer>
+  &copy; 2025 UnmaskFiles. Truth Has No Owner.
+</footer>
 
-  <script>
-    function toggleMenu(icon) {
-      icon.classList.toggle('open');
-      const nav = document.querySelector('.nav-links');
-      nav.classList.toggle('active');
-      icon.innerHTML = icon.classList.contains('open') ? '&times;' : '&#9776;';
-    }
-  </script>
+<script>
+  const canvas = document.getElementById("bg");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particlesArray = [];
+  const colors = ["#76323F", "#C09F80", "#fff", "#D7CEC7"];
+
+  for (let i = 0; i < 100; i++) {
+    particlesArray.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 3 + 1,
+      speedX: Math.random() * 1 - 0.5,
+      speedY: Math.random() * 1 - 0.5,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    });
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+
+      if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animateParticles);
+  }
+
+  animateParticles();
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
 </body>
 </html>
