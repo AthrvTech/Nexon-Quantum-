@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UnmaskFiles</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -12,9 +12,10 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #EFECE9;
+      background-color: #D7CEC7;
       color: #333;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
     }
     nav {
       width: 100%;
@@ -26,7 +27,7 @@
       border-bottom: 1px solid #C4BCB6;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 10;
     }
     .logo {
       font-size: 1.8rem;
@@ -69,15 +70,18 @@
       font-size: 3.5rem;
       color: #76323F;
       font-family: 'Playfair Display', serif;
+      letter-spacing: 1.5px;
       margin-bottom: 10px;
     }
     header p {
       font-size: 1.3rem;
       color: #565656;
       font-style: italic;
+      animation: fadeIn 2s ease-in-out;
     }
     .buttons {
       margin-top: 40px;
+      animation: fadeInUp 1.5s ease-in-out;
     }
     .buttons a {
       text-decoration: none;
@@ -94,13 +98,21 @@
       background-color: #C09F80;
       color: #111;
     }
-    .section {
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin: 100px 0 20px;
+      color: #76323F;
+      font-family: 'Playfair Display', serif;
+    }
+    section.grid-section {
       padding: 80px 20px;
       background-color: #EFECE9;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       text-align: center;
+      animation: fadeIn 2s ease-in-out;
     }
     .card {
       background: #fff;
@@ -127,16 +139,15 @@
       text-align: center;
       font-size: 0.95rem;
       color: #555;
+      margin-top: 100px;
       padding: 30px;
       border-top: 1px solid #C4BCB6;
       background-color: #F3F1EF;
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     @media (max-width: 768px) {
-      .menu-toggle { display: block; }
+      .menu-toggle {
+        display: block;
+      }
       .nav-links {
         position: absolute;
         top: 70px;
@@ -149,7 +160,9 @@
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         display: none;
       }
-      .nav-links.active { display: flex; }
+      .nav-links.active {
+        display: flex;
+      }
     }
   </style>
 </head>
@@ -159,9 +172,11 @@
     <div class="menu-toggle" onclick="toggleMenu(this)">&#9776;</div>
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
-      <li><a href="#">Explore</a></li>
-      <li><a href="#">Submit</a></li>
-      <li><a href="#">Rights</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Cases</a></li>
+      <li><a href="#">Submit Leak</a></li>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Law & Rights</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
   </nav>
@@ -170,44 +185,35 @@
     <h1>One File Can Start a Revolution.</h1>
     <p>Exposing hidden truths. No faces. Just files.</p>
     <div class="buttons">
-      <a href="#">Explore Leaks</a>
+      <a href="#">Explore Files</a>
       <a href="#">Submit Tip</a>
     </div>
   </header>
 
-  <section class="section">
-    <div class="card">
-      <h3>📂 Verified Leaks</h3>
-      <p>All documents are double-verified for authenticity.</p>
-    </div>
-    <div class="card">
-      <h3>🔐 Secure Submission</h3>
-      <p>Send files anonymously using encrypted methods.</p>
-    </div>
-    <div class="card">
-      <h3>🧠 Deep Investigations</h3>
-      <p>Each tip is thoroughly investigated and tracked.</p>
-    </div>
-    <div class="card">
-      <h3>🛡️ Whistleblower Safety</h3>
-      <p>Your identity is always protected by our tech.</p>
-    </div>
-    <div class="card">
-      <h3>📊 Evidence-based Reports</h3>
-      <p>Truth backed by proof, not opinions.</p>
-    </div>
-    <div class="card">
-      <h3>🛰️ Real-Time Exposure</h3>
-      <p>Quick publishing of leaks with zero censorship.</p>
-    </div>
-    <div class="card">
-      <h3>📢 Awareness Campaigns</h3>
-      <p>Training and educating India on justice and truth.</p>
-    </div>
+  <h2 class="section-title">What We Do</h2>
+  <section class="grid-section">
+    <div class="card"><h3>📂 Verified Leaks</h3><p>All documents are double-verified for authenticity.</p></div>
+    <div class="card"><h3>🔐 Secure Submission</h3><p>Send files anonymously using encrypted methods.</p></div>
+    <div class="card"><h3>🧠 Deep Investigations</h3><p>Each tip is thoroughly investigated and tracked.</p></div>
+    <div class="card"><h3>🛡️ Whistleblower Safety</h3><p>Your identity is always protected by our tech.</p></div>
+    <div class="card"><h3>📊 Evidence-based Reports</h3><p>Truth backed by proof, not opinions.</p></div>
+    <div class="card"><h3>🚀 Real-Time Exposure</h3><p>Quick publishing of leaks with zero censorship.</p></div>
+    <div class="card"><h3>📢 Awareness Campaigns</h3><p>Training and educating India on justice and truth.</p></div>
+  </section>
+
+  <h2 class="section-title">More From Us</h2>
+  <section class="grid-section">
+    <div class="card"><h3>📚 Constitution & Laws</h3><p>Learn your fundamental rights and legal powers.</p></div>
+    <div class="card"><h3>⚖️ Legal Support</h3><p>We support legal rights to expose corruption in India.</p></div>
+    <div class="card"><h3>🗂️ Expose Categories</h3><p>Corruption, fraud, terrorism, cybercrime, abuse & more.</p></div>
+    <div class="card"><h3>🧾 Submit a Leak</h3><p>Use our secure form to report issues anonymously.</p></div>
+    <div class="card"><h3>📬 Contact Us</h3><p>Email: globalxpose@gmail.com — We reply within 24h.</p></div>
+    <div class="card"><h3>📈 Impact Dashboard</h3><p>Live updates on cases, leaks, and outcomes.</p></div>
+    <div class="card"><h3>👤 About Us</h3><p>Why we exist and who stands behind UnmaskFiles.</p></div>
   </section>
 
   <footer>
-    &copy; 2025 UnmaskFiles. Truth has no owner.
+    &copy; 2025 UnmaskFiles. Truth has no owner. All data is securely transmitted.
   </footer>
 
   <script>
