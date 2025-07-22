@@ -1,166 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UnmaskFiles - Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #D7CEC7;
-      color: #333;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexon Quantum - Innovating Digital Experiences</title>
+    <!-- Tailwind CSS CDN for modern and responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a sleek, professional look */
+        body {
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden; /* Prevents horizontal scroll issues, especially with animations */
+        }
 
-    /* Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #76323F;
-      padding: 15px 25px;
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: #fff;
-    }
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
+        /* Custom gradient for the hero section background */
+        .hero-gradient-bg {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); /* Dark, futuristic gradient */
+            position: relative; /* Needed for pseudo-element positioning */
+            overflow: hidden; /* Hides overflow from the background animation */
+        }
 
-    /* Hero */
-    header {
-      text-align: center;
-      padding: 100px 20px 60px;
-      background-color: #F3F1EF;
-      border-bottom: 1px solid #C4BCB6;
-    }
-    header h1 {
-      font-size: 3rem;
-      color: #76323F;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #555;
-      font-style: italic;
-    }
+        /* Subtle background animation for the hero section to add dynamism */
+        .hero-gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Radial gradient for a glowing/pulsing effect */
+            background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
+            animation: pulse-bg 15s infinite alternate ease-in-out; /* Animation definition */
+            z-index: 0; /* Ensures it stays behind content */
+        }
 
-    /* Sections */
-    section {
-      padding: 50px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      color: #76323F;
-      margin-bottom: 10px;
-    }
-    section p {
-      color: #444;
-    }
+        /* Keyframes for the hero background pulse animation */
+        @keyframes pulse-bg {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
 
-    /* Subscribe */
-    .subscribe input[type="email"] {
-      padding: 12px;
-      width: 70%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-    .subscribe button {
-      padding: 12px 20px;
-      background-color: #76323F;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-left: 10px;
-      font-weight: 600;
-    }
+        /* Text animation for elements within the hero section */
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards; /* Apply fadeInUp animation */
+            opacity: 0; /* Start elements hidden */
+        }
 
-    /* Footer */
-    footer {
-      background-color: #F3F1EF;
-      padding: 30px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-      border-top: 1px solid #C4BCB6;
-    }
+        /* Delays for sequential animation of hero text elements */
+        .animate-fade-in-up.delay-1 { animation-delay: 0.3s; }
+        .animate-fade-in-up.delay-2 { animation-delay: 0.6s; }
+        .animate-fade-in-up.delay-3 { animation-delay: 0.9s; }
 
-    @media (max-width: 600px) {
-      .subscribe input {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-      .subscribe button {
-        width: 100%;
-        margin-left: 0;
-      }
-      .nav-links {
-        flex-direction: column;
-        align-items: flex-end;
-      }
-    }
-  </style>
+        /* Keyframes for the fade-in-up text animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Start slightly below final position */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* End at final position */
+            }
+        }
+
+        /* Primary button styling with gradient and hover effects */
+        .btn-primary {
+            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%); /* Indigo to purple gradient */
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%); /* Reverse gradient on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        /* Service card styling with hover effects */
+        .service-card {
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+            border: 1px solid transparent; /* Transparent border for hover effect */
+        }
+        .service-card:hover {
+            transform: translateY(-5px); /* Slight lift effect on hover */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+            border-color: #6366f1; /* Indigo border on hover */
+        }
+
+        /* Mobile menu specific styles for slide-in/out effect */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out; /* Smooth slide transition */
+            transform: translateX(100%); /* Start off-screen to the right */
+        }
+        .mobile-menu.open {
+            transform: translateX(0); /* Slide into view */
+        }
+
+        /* WhatsApp icon bouncing animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); /* Moves up 10px in the middle of the animation */
+            }
+        }
+
+        .whatsapp-icon-bounce {
+            animation: bounce 2s infinite ease-in-out; /* Apply bounce animation */
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-900 text-gray-100">
 
-  <nav>
-    <div class="logo">UnmaskFiles</div>
-    <div class="nav-links">
-      <a href="#">About Us</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Disclaimer</a>
-      <a href="#">Contact</a>
+    <!-- Header Section: Fixed at the top, responsive navigation -->
+    <header class="bg-gray-800 shadow-lg py-4 px-6 md:px-12 flex justify-between items-center fixed w-full z-20 rounded-b-lg">
+        <!-- Agency Logo/Name -->
+        <div class="text-2xl md:text-3xl font-extrabold text-white">
+            Nexon <span class="text-indigo-400">Quantum</span>
+        </div>
+        <!-- Desktop Navigation Menu -->
+        <nav class="hidden md:flex space-x-8">
+            <a href="#home" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Home</a>
+            <a href="#services" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Services</a>
+            <a href="#portfolio" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Portfolio</a>
+            <a href="#about" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">About Us</a>
+            <a href="#contact" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Contact</a>
+        </nav>
+        <!-- Mobile Menu Button (Hamburger Icon) -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none rounded-md p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu Overlay: Slides in from the right -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-800 shadow-xl z-30 md:hidden p-6 pt-20 rounded-l-lg">
+        <!-- Close button for the mobile menu -->
+        <button id="close-mobile-menu" class="absolute top-4 right-4 text-gray-300 hover:text-white focus:outline-none rounded-md p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <!-- Mobile Navigation Links -->
+        <nav class="flex flex-col space-y-6 text-lg">
+            <a href="#home" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Home</a>
+            <a href="#services" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Services</a>
+            <a href="#portfolio" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Portfolio</a>
+            <a href="#about" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">About Us</a>
+            <a href="#contact" class="text-gray-300 hover:text-white transition duration-300 rounded-md px-3 py-2">Contact</a>
+        </nav>
     </div>
-  </nav>
 
-  <header>
-    <h1>Coming Soon</h1>
-    <p>Truth is loading... Stay tuned.</p>
-  </header>
+    <!-- Hero Section: Main visual and call to action -->
+    <section id="home" class="hero-gradient-bg min-h-screen flex items-center justify-center text-center p-6 pt-20 md:pt-0 relative">
+        <div class="max-w-5xl mx-auto z-10">
+            <!-- Main Headline with animation -->
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-6 animate-fade-in-up rounded-md">
+                Innovating Your <span class="text-indigo-400">Digital Future</span>
+            </h1>
+            <!-- Sub-headline with animation delay -->
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 opacity-90 animate-fade-in-up delay-1">
+                Nexon Quantum: Crafting bespoke websites, mobile apps, immersive games, robust software, and intelligent tools that redefine possibilities.
+            </p>
+            <!-- Call-to-action buttons with animation delay -->
+            <div class="space-x-4 animate-fade-in-up delay-2">
+                <a href="#services" class="btn-primary text-white font-bold py-4 px-10 rounded-full inline-block text-lg">
+                    Our Services
+                </a>
+                <a href="#contact" class="bg-transparent border-2 border-indigo-400 text-indigo-300 hover:bg-indigo-400 hover:text-white font-bold py-4 px-10 rounded-full inline-block text-lg transition duration-300">
+                    Get a Quote
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2>About Us</h2>
-    <p><strong>UnmaskFiles</strong> is a platform built to expose political scams, corruption, human rights violations, propaganda, and hidden truths. We believe in truth, justice, and transparency.</p>
-  </section>
+    <!-- Services Section: Showcases the agency's core offerings -->
+    <section id="services" class="py-16 bg-gray-900 px-6 md:px-12">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-white mb-12">Our Core Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card: Websites -->
+                <div class="service-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl">
+                    <div class="text-indigo-400 mb-4 text-center">
+                        <!-- Icon for Websites (SVG for scalability) -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9.25 21L12 24L14.75 21L14.25 17M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2Z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 text-center">Websites</h3>
+                    <p class="text-gray-400 text-center">From stunning corporate sites to powerful e-commerce platforms, we build responsive and engaging web experiences.</p>
+                </div>
+                <!-- Service Card: Mobile Apps -->
+                <div class="service-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl">
+                    <div class="text-indigo-400 mb-4 text-center">
+                        <!-- Icon for Mobile Apps -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 text-center">Mobile Apps</h3>
+                    <p class="text-gray-400 text-center">Develop intuitive and high-performance mobile applications for iOS and Android that captivate users.</p>
+                </div>
+                <!-- Service Card: Games -->
+                <div class="service-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl">
+                    <div class="text-indigo-400 mb-4 text-center">
+                        <!-- Icon for Games -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.944 9.944 0 0112 22a9.944 9.944 0 011-18.945M12 22v-4m0-4v-4m0-4V2"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 text-center">Games</h3>
+                    <p class="text-gray-400 text-center">From casual mobile games to complex interactive experiences, we bring your game ideas to life.</p>
+                </div>
+                <!-- Service Card: Custom Software -->
+                <div class="service-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl">
+                    <div class="text-indigo-400 mb-4 text-center">
+                        <!-- Icon for Custom Software -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10h2m-2 0a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2m3 4H9m2 0h2"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 text-center">Custom Software</h3>
+                    <p class="text-gray-400 text-center">Tailored software solutions to streamline your business operations and enhance efficiency.</p>
+                </div>
+                <!-- Service Card: Digital Tools -->
+                <div class="service-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl">
+                    <div class="text-indigo-400 mb-4 text-center">
+                        <!-- Icon for Digital Tools -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.393 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 text-center">Digital Tools</h3>
+                    <p class="text-gray-400 text-center">Crafting innovative digital tools and utilities to enhance productivity and solve specific industry needs.</p>
+                </div>
+                <!-- Service Card: UI/UX Design -->
+                <div class="service-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl">
+                    <div class="text-indigo-400 mb-4 text-center">
+                        <!-- Icon for UI/UX Design -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 text-center">UI/UX Design</h3>
+                    <p class="text-gray-400 text-center">Creating intuitive, beautiful, and user-centric designs that ensure a seamless digital experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2>Our Vision</h2>
-    <p>We envision a world where whistleblowers are safe, and the truth is never buried. Our goal is to create a secure space for anonymous reports and investigative content — supported by TRIDENT and the spirit of justice.</p>
-  </section>
+    <!-- Portfolio Section: Placeholder for showcasing past work -->
+    <section id="portfolio" class="py-16 bg-gray-800 px-6 md:px-12">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-8">Our Work</h2>
+            <p class="text-lg text-gray-300 mb-10">
+                Explore a selection of our recent projects that highlight our expertise in crafting exceptional digital solutions.
+            </p>
+            <!-- Placeholder for portfolio items - you would add actual project cards here -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-700 p-6 rounded-xl shadow-lg border border-gray-600">
+                    <img src="https://placehold.co/400x250/333/fff?text=Project+1" alt="Project Placeholder 1" class="rounded-lg mb-4 w-full h-auto">
+                    <h3 class="text-xl font-semibold text-white mb-2">E-commerce Platform</h3>
+                    <p class="text-gray-400 text-sm">A robust online store with seamless user experience.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-xl shadow-lg border border-gray-600">
+                    <img src="https://placehold.co/400x250/333/fff?text=Project+2" alt="Project Placeholder 2" class="rounded-lg mb-4 w-full h-auto">
+                    <h3 class="text-xl font-semibold text-white mb-2">Interactive Mobile Game</h3>
+                    <p class="text-gray-400 text-sm">Engaging game developed for iOS and Android.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-xl shadow-lg border border-gray-600">
+                    <img src="https://placehold.co/400x250/333/fff?text=Project+3" alt="Project Placeholder 3" class="rounded-lg mb-4 w-full h-auto">
+                    <h3 class="text-xl font-semibold text-white mb-2">Custom CRM Software</h3>
+                    <p class="text-gray-400 text-sm">Tailored solution for client relationship management.</p>
+                </div>
+            </div>
+            <a href="#contact" class="btn-primary text-white font-bold py-3 px-8 rounded-full inline-block text-lg mt-10">
+                View More Projects
+            </a>
+        </div>
+    </section>
 
-  <section class="subscribe">
-    <h2>Get Notified</h2>
-    <p>Subscribe to receive updates when we launch.</p>
-    <form onsubmit="alert('Thank you for subscribing!'); return false;">
-      <input type="email" placeholder="Enter your email..." required />
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
+    <!-- About Section: Agency's mission and values -->
+    <section id="about" class="py-16 bg-gray-900 px-6 md:px-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-8">About Nexon Quantum</h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                At Nexon Quantum, we are a team of passionate innovators dedicated to transforming ideas into impactful digital realities. With expertise spanning web development, mobile applications, game design, custom software, and digital tools, we empower businesses to thrive in the ever-evolving digital landscape.
+            </p>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                Our philosophy is rooted in collaboration, creativity, and a relentless pursuit of excellence. We partner with our clients to understand their unique challenges and deliver bespoke solutions that not only meet but exceed expectations, driving growth and engagement.
+            </p>
+        </div>
+    </section>
 
-  <section>
-    <h2>Contact Us</h2>
-    <p>Instagram: @unmaskfiles</p>
-  </section>
+    <!-- Contact Section: Form for inquiries -->
+    <section id="contact" class="py-16 bg-gray-800 px-6 md:px-12">
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-white mb-12">Get in Touch</h2>
+            <!-- Form action updated to mailto -->
+            <form action="mailto:mrhackershivansh143@gmail.com" method="post" enctype="text/plain" class="space-y-6 bg-gray-700 p-8 rounded-xl shadow-lg border border-gray-600">
+                <div>
+                    <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Name</label>
+                    <input type="text" id="name" name="Name" class="shadow appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-900" placeholder="Your Name" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="email" name="Email" class="shadow appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-900" placeholder="your@example.com" required>
+                </div>
+                <div>
+                    <label for="service_interest" class="block text-gray-300 text-sm font-bold mb-2">Service of Interest</label>
+                    <select id="service_interest" name="Service Interest" class="shadow appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-900">
+                        <option value="">Select a Service</option>
+                        <option value="website">Website Development</option>
+                        <option value="mobile_app">Mobile App Development</option>
+                        <option value="game_dev">Game Development</option>
+                        <option value="software_dev">Custom Software Development</option>
+                        <option value="digital_tools">Digital Tools Development</option>
+                        <option value="ui_ux">UI/UX Design</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message</label>
+                    <textarea id="message" name="Message" rows="6" class="shadow appearance-none border border-gray-600 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-900" placeholder="Tell us about your project..." required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn-primary text-white font-bold py-3 px-8 rounded-full shadow-lg inline-block text-lg">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
 
-  <footer>
-    &copy; 2025 UnmaskFiles. Truth Has No Owner. | Built with ❤️ for justice.
-  </footer>
+    <!-- Footer Section: Comprehensive links and information -->
+    <footer class="bg-gray-900 py-10 px-6 md:px-12 text-gray-400">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+            <!-- Footer Column 1: Logo and Tagline -->
+            <div>
+                <div class="text-3xl font-extrabold text-white mb-4">
+                    Nexon <span class="text-indigo-400">Quantum</span>
+                </div>
+                <p class="text-sm leading-relaxed">Innovating digital experiences for a quantum leap in your business.</p>
+            </div>
 
+            <!-- Footer Column 2: Quick Links -->
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:text-white transition duration-300">Home</a></li>
+                    <li><a href="#services" class="hover:text-white transition duration-300">Services</a></li>
+                    <li><a href="#portfolio" class="hover:text-white transition duration-300">Portfolio</a></li>
+                    <li><a href="#about" class="hover:text-white transition duration-300">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 3: Services Links -->
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Our Services</h3>
+                <ul class="space-y-2">
+                    <li><a href="#services" class="hover:text-white transition duration-300">Website Development</a></li>
+                    <li><a href="#services" class="hover:text-white transition duration-300">Mobile App Development</a></li>
+                    <li><a href="#services" class="hover:text-white transition duration-300">Game Development</a></li>
+                    <li><a href="#services" class="hover:text-white transition duration-300">Custom Software</a></li>
+                    <li><a href="#services" class="hover:text-white transition duration-300">Digital Tools</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 4: Contact & Social -->
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Contact Us</h3>
+                <p class="mb-2">Email: <a href="mailto:mrhackershivansh143@gmail.com" class="hover:text-white transition duration-300">mrhackershivansh143@gmail.com</a></p>
+                <p class="mb-4">Phone: <a href="tel:+918779989576" class="hover:text-white transition duration-300">+91 8779989576</a></p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Social Media Icons (placeholders) -->
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.356-.012-.534A8.358 8.358 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.322 8.322 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.107 4.107 0 001.27 5.477A4.072 4.072 0 012 10.425v.054a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.25 8.25 0 012 18.001a11.64 11.64 0 006.29 2.251"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.953 0-1.09.39-1.983 1.029-2.685-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.701.115 2.503.337 1.909-1.295 2.747-1.025 2.747-1.025.546 1.379.202 2.398.099 2.65.64.702 1.029 1.595 1.029 2.685 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.523 2 12 2Z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.715.056 8.825.385 9.475 2.16 9.475 9.475 0 .935-.043 1.289-.056 3.715-.056 8.825-.385 9.475-9.475 9.475-.935 0-1.289-.043-3.715-.056-8.825-.385-9.475-2.16-9.475-9.475 0-.935.043-1.289.056-3.715.056-8.825.385-9.475 9.475-9.475ZM12 7.21c-2.647 0-4.79 2.143-4.79 4.79s2.143 4.79 4.79 4.79 4.79-2.143 4.79-4.79-2.143-4.79-4.79-4.79ZM12 15.8c-2.09 0-3.79-1.7-3.79-3.79S9.91 8.21 12 8.21s3.79 1.7 3.79 3.79-1.7 3.79-3.79 3.79Zm3.415-6.805a1.18 1.18 0 1 0 0-2.36 1.18 1.18 0 0 0 0 2.36Z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+            <p>&copy; 2025 Nexon Quantum. All rights reserved.</p>
+            <div class="mt-2 space-x-4">
+                <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918779989576" target="_blank" class="fixed bottom-24 right-6 z-50 bg-green-500 p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 whatsapp-icon-bounce">
+        <!-- WhatsApp Icon SVG -->
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.04 2C7.343 2 3.593 5.757 3.593 10.454c0 1.407.356 2.805 1.05 4.037l-.76 2.792 2.85-1.037c1.178.65 2.511 1.006 3.897 1.006h.005c4.695 0 8.449-3.757 8.449-8.455C20.484 5.757 16.73 2 12.04 2zm4.78 12.923c-.15.247-.852.617-.99.68-.138.062-.298.093-.45.047-.15-.046-.576-.214-.67-.35-.093-.136-.093-.247-.062-.35.03-.105.15-.247.224-.31.075-.062.15-.15.224-.223.075-.075.15-.15.224-.247.075-.093.03-.186-.03-.28-.062-.093-.57-.93-.76-1.36-.186-.43-.37-.37-.52-.37-.15 0-.32.015-.49.015-.168 0-.45.062-.68.31-.22.247-.85.84-.85 2.047 0 1.2.87 2.378.99 2.53.12.15.68 1.05 1.65 1.45.97.4 1.95.31 2.27.247.32-.063.85-.35.97-.7.12-.35.12-.65.093-.74zm.93-8.83c-.27-.27-.63-.46-.99-.59-.36-.12-.72-.19-1.08-.19-.36 0-.72.06-.99.19-.27.12-.54.31-.81.59-.27.27-.46.63-.59.99-.12.36-.19.72-.19 1.08 0 .36.06.72.19.99.12.27.31.54.59.81.27.27.63.46.99.59.36.12.72.19 1.08.19.36 0 .72-.06.99-.19.27-.12.54-.31.81-.59.27-.27.46-.63.59-.99.12-.36.19-.72.19-1.08 0-.36-.06-.72-.19-.99z" />
+        </svg>
+    </a>
+
+    <!-- JavaScript for Mobile Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('a');
+
+            // Function to open the mobile menu
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.add('open');
+            });
+
+            // Function to close the mobile menu
+            closeMobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+
+            // Close mobile menu when a navigation link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                });
+            });
+
+            // Optional: Close mobile menu if clicked outside
+            // document.addEventListener('click', (event) => {
+            //     if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target) && mobileMenu.classList.contains('open')) {
+            //         mobileMenu.classList.remove('open');
+            //     }
+            // });
+        });
+    </script>
 </body>
 </html>
